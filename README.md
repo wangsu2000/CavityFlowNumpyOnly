@@ -12,3 +12,5 @@ And the stem of this work can be transplanted into cupy module.
 The 'Stable_CavityFlow_2or3order.py' gives the Crank-Nicolson(2th order) and RK3(3th order)
 version in the original manuscripts while 'Euler_forward.py' gives a 1th order
 numerical formulation.
+The simulation streamlines are as follows:
+![Streamlines](v2-dd18b58d2cf151602249ce0cc2560875_r.png)
