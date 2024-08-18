@@ -225,7 +225,7 @@ if __name__ == "__main__":
     inference_root = "cavityFlow_inference"
     os.makedirs(inference_root,exist_ok = True)
     recordRate = 250
-    Re = cp.expand_dims(cp.round(cp.logspace(2,4,3)).reshape(-1,1),axis = 2)  # Reynolds number
+    Re = cp.expand_dims(cp.round(cp.logspace(2,4,3)).reshape(-1,1),axis = 2)  # Reynolds number 100,1000,10000
     for re in range(Re.shape[0]):
         os.makedirs(os.path.join(inference_root,str(int(Re[re,0,0]))),exist_ok = True)
     
