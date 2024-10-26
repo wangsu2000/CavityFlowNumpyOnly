@@ -19,3 +19,8 @@ A cupy version of data parallel version is released in gpuCavityFlow.py
 The memory of Nvidia-gpu can be exploited efficiently by solving thousands 
 of 2d equations simultaneously.
 
+Now a 3d-cavity simulation with pytorch implement is released and 
+the visualization can be completed on Matlab or paraview, the images
+derived from [知乎](https://zhuanlan.zhihu.com/p/852110231)
+![cavity3d]()
+
