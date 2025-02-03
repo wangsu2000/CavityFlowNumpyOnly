@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import time
 from tqdm import trange
 import os
+from scipy.fft import dctn, idctn
 
 def CH2D12(N, T, ep, mu, seed, k):
     """
@@ -39,16 +40,23 @@ def CH2D12(N, T, ep, mu, seed, k):
         # Load old concentration
         co = -1.0 * cvecs[:(N + 1) ** 2, n - 1].reshape((N + 1, N + 1))
         yo = 3 * co - co ** 3
-        co = V.T @ co @ V
-        yo = V.T @ yo @ V
-        co = V @ (w11 * co + w12 * yo) @ V.T
+
+        # Use DCT instead of matrix multiplication with V
+        co = dctn(co, type=1)
+        yo = dctn(yo, type=1)
+
+        co = w11 * co + w12 * yo
+
+        # Use inverse DCT
+        co = idctn(co, type=1)
+
         cvecs[:, n] = co.flatten()
 
     t = time.time() - start_time
     return cvecs
 
 
-def CH2D_Plot_Evolution(cvecs):
+def CH2D_Plot_Evolution(cvecs, saveInterval):
     """
     CH2D_Plot_Evolution plots the evolution in time of the concentration
     distribution in a two-dimensional Cahn-Hilliard simulations.
@@ -65,17 +73,19 @@ def CH2D_Plot_Evolution(cvecs):
     Nsq = cvecs.shape[0]
     N = int(np.sqrt(Nsq) - 1)
     foldername = "CahnHilliard_frames"
-    os.makedirs(foldername)
+    os.makedirs(foldername, exist_ok=True)
     plt.figure()
+    rec = 0
     for n in range(T):
-        Cmat = cvecs[:, n].reshape((N + 1, N + 1))
-        plt.pcolormesh(Cmat, shading='gouraud')
-        plt.axis('off')
-        # plt.pause(0.01)
-        plt.colorbar()
-        plt.savefig(os.path.join(foldername,"N{:d}n{:d}T{:d}.png".format(N,n,T)))
-        
-        plt.clf();
+        if n % saveInterval == 0:
+           Cmat = cvecs[:, n].reshape((N + 1, N + 1))
+           plt.pcolormesh(Cmat, shading='gouraud')
+           plt.axis('off')
+           # plt.pause(0.01)
+           plt.colorbar()
+           plt.savefig(os.path.join(foldername,"N{:d}n{:d}T{:d}.png".format(N,rec,int(T/saveInterval))))
+           plt.clf()
+           rec += 1
 
 
 def CH_intial_2D(N, T, k, seed):
@@ -128,16 +138,16 @@ def eigenPairs(n):
 
 
 if __name__ == "__main__":
-  # Set simulation parameters
-  N = 256
-  T = 500
-  ep = 0.01
-  mu = 1
-  seed = 0
-  k = 1  # random initial condition
-  
-  # Run one of the schemes
-  cvecs = CH2D12(N, T, ep, mu, seed, k)
-  
-  # Plot the evolution
-  CH2D_Plot_Evolution(cvecs)
+    # Set simulation parameters
+    N = 512
+    T = 2500
+    ep = 0.01
+    mu = 1
+    seed = 0
+    k = 1  # random initial condition
+    saveInterval = 10
+    # Run one of the schemes
+    cvecs = CH2D12(N, T, ep, mu, seed, k)
+
+    # Plot the evolution
+    CH2D_Plot_Evolution(cvecs, saveInterval)
