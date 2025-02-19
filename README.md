@@ -26,6 +26,10 @@ derived from [知乎](https://zhuanlan.zhihu.com/p/852110231)
 
 Also a cahn-hilliard-FDM solver has been committed 
 compromising 2d and 3d implements
-https://github.com/wangsu2000/CavityFlowNumpyOnly/edit/main/bubble_merge.mp4
+
+<video width="320" height="240" controls>
+    <source src="bubble_merge.mp4" type="video/mp4">
+</video>
+
 
 ![cahn-hilliard-3d](cahn_hilliard_3d.jpg)
