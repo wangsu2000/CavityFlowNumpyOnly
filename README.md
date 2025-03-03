@@ -32,4 +32,4 @@ compromising 2d and 3d implements
 ![cahn-hilliard-3d](cahn_hilliard_3d.jpg)
 
 A numpy motivated Cylinder's flow has been submitted in cylinder.mp4;
-And the figure can be seen in ![cylinder](79.jpg)
+And the figure can be seen in ![cylinder](79.png)
