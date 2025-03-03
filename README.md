@@ -20,7 +20,8 @@ The memory of Nvidia-gpu can be exploited efficiently by solving thousands
 of 2d equations simultaneously.
 
 A numpy motivated Cylinder's winding flow has been submitted in cylinder.mp4;
-And the figure can be seen in ![cylinder](79.png)
+And the figure can be seen in 
+![cylinder](79.png)
 
 Now a 3d-cavity simulation with pytorch implement is released and 
 the visualization can be completed on Matlab or paraview, the images
