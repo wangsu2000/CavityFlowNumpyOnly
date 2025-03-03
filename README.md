@@ -19,6 +19,9 @@ A cupy version of data parallel version is released in gpuCavityFlow.py
 The memory of Nvidia-gpu can be exploited efficiently by solving thousands 
 of 2d equations simultaneously.
 
+A numpy motivated Cylinder's winding flow has been submitted in cylinder.mp4;
+And the figure can be seen in ![cylinder](79.png)
+
 Now a 3d-cavity simulation with pytorch implement is released and 
 the visualization can be completed on Matlab or paraview, the images
 derived from [知乎](https://zhuanlan.zhihu.com/p/852110231)
@@ -31,5 +34,4 @@ compromising 2d and 3d implements
 
 ![cahn-hilliard-3d](cahn_hilliard_3d.jpg)
 
-A numpy motivated Cylinder's flow has been submitted in cylinder.mp4;
-And the figure can be seen in ![cylinder](79.png)
+
