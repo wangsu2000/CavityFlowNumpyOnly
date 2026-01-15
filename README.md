@@ -26,7 +26,7 @@ And the figure can be seen in
 Now a 3d-cavity simulation with pytorch implement is released and 
 the visualization can be completed on Matlab or paraview, the images
 derived from [知乎](https://zhuanlan.zhihu.com/p/852110231)
-![cavity3d](v2-b106ce92bd10fc6b07c5a6a6e41b46d3_r.png)
+![cavity3d](cavity3d3.png)
 
 Also a cahn-hilliard-FDM solver has been committed 
 compromising 2d and 3d implements
